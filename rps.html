@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+
+
+        // Computer needs to randomly choose rock, paper or scissors.
+        function getComputerChoice() {
+            let randNum = Math.floor(Math.random() * 3);
+            let computerChoice;
+
+            if (randNum === 2) {
+                computerChoice = "rock";
+            } else if (randNum === 1) {
+                computerChoice = "paper";
+            } else {
+                computerChoice = "scissors";
+            }
+
+            return computerChoice;
+        }
+
+        // Give player a choice of rock, paper or scissors in order to play.
+        function getPlayerChoice() {
+            let playerChoice = prompt("Enter: Rock, Paper or Scissors").toLowerCase();
+            return playerChoice;
+        }
+
+        // Logic for winning, losing or drawing the round
+        function getResult(playerChoice, computerChoice) {
+            let result;
+            if ((playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "paper" && computerChoice === "rock") ||
+                (playerChoice === "scissors" && computerChoice === "paper")) {
+                result = "win";
+            } else if ((playerChoice === "rock" && computerChoice === "paper") ||
+                (playerChoice === "paper" && computerChoice === "scissors") ||
+                (playerChoice === "scissors" && computerChoice === "rock")) {
+                result = "lose";
+            } else {
+                result = "draw";
+            }
+
+            return result;
+        }
+
+        // Message letting the player know who won the round
+        function roundMessage(result, playerChoice, computerChoice) {
+            let message;
+            if (result === "win") {
+                message = ("You chose " + playerChoice + ". The computer chose " + computerChoice + ". Well Done! You Won!");
+            } else if (result === "lose") {
+                message = ("You chose " + playerChoice + ". The computer chose " + computerChoice + ". Bad Luck! You Lost. Try Again!");
+            } else {
+                message = ("You chose " + playerChoice + ". The computer chose " + computerChoice + ". Wow! It's a draw. Try Again!");
+            }
+            return message;
+        }
+
+        // Play a single round
+        function playRound() {
+            let playerChoice = getPlayerChoice();
+            let computerChoice = getComputerChoice();
+            let result = getResult(playerChoice, computerChoice);
+            console.log(roundMessage(result, playerChoice, computerChoice));
+            return result;
+        }
+
+        // Playing a 5 round game
+        function playGame() {
+            let playerScore = 0;
+            let computerScore = 0;
+            const rounds = 5;
+
+            for (let i = 0; i < rounds; i++) {
+                console.log(`Round ${i + 1}`);
+                let result = playRound();
+                if (result === "win") {
+                    playerScore++;
+                } else if (result === "lose") {
+                    computerScore++;
+                }
+                console.log(`Score: Player ${playerScore} - Computer ${computerScore}`);
+            }
+
+            console.log("\nGame Over!");
+            if (playerScore > computerScore) {
+                console.log("You are the overall winner!");
+            } else if (computerScore > playerScore) {
+                console.log("Computer is the overall winner!");
+            } else {
+                console.log("The game is a draw!");
+            }
+
+            let replay = prompt("Do you want to play again? (Yes or No?)").toLowerCase();
+            if (replay === "yes") {
+                playGame();
+            } else {
+                console.log("Thanks for playing!");
+            }
+        }
+
+        // Start the game
+        playGame();
+    </script>
+</body>
+</html>
