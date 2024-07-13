@@ -1,0 +1,102 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F0A500;
+}
+
+#title{
+    display: flex;
+    font-size:5em;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    padding-top:0.3em;
+}
+
+#description{
+    display: flex;
+    font-size: 2em;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#game{
+    display: flex;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 900px;
+    min-height: 600px;
+}
+
+#gamedisplay{
+    border: 1px solid black;
+    display: flex;
+    min-width: 70%;
+    height: auto;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#playerChoice, #computerChoice{
+    border: 1px solid black;
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    height: 125px;
+    font-size: 1.5em;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+#playerImage, #computerImage{
+    border: 1px solid black;
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    height: 125px;
+}
+
+
+
+#buttondisplay{
+    border: 1px solid black;
+    display: flex;
+}
+
+#rockbtn{
+    display: flex;
+}
+
+#paperbtn{
+    display: flex;
+}
+
+#scissorsbtn{
+    display: flex;
+}
+
+
+#displayresult{
+    display: flex;
+    font-size: 2em;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.buttonimg{
+    width: 50px;
+    height: 50px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="title">Rock Paper Scissors</div>
+    <div id="description">Click either rock, paper, or scissors to play</div>
+    <div id="game">
+        <div id="gamedisplay">
+            <div id="playerChoice" class="icons"><img id="playerImage" src="images/rock.png"></div>
+            <div id="computerChoice" class="icons"><img id="computerImage" src="images/paper.png"></div>
+        </div>
+        <div id="displayresult">Who Won?</div>
+        <div id="buttondisplay">
+            <button onclick="playGame('rock')" id="rockbtn" class="button"><img class="buttonimg" src="images/rock.png"></button>
+            <button onclick="playGame('paper')" id="paperbtn" class="button"><img class="buttonimg" src="images/paper.png"></button>
+            <button onclick="playGame('scissors')" id="scissorsbtn" class="button"><img class="buttonimg" src="images/scissors.png"></button>
+        </div> 
+    </div>
+    <script>
+        function playGame(playerChoice) {
+            const computerChoice = getComputerChoice();
+            const result = getResult(playerChoice, computerChoice);
+
+            document.getElementById("playerImage").src = "images/" + playerChoice + ".png";
+            document.getElementById("computerImage").src = "images/" + computerChoice + ".png";
+            document.getElementById("displayresult").textContent = result;
+        }
+
+        function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            const randNum = Math.floor(Math.random() * 3);
+            return choices[randNum];
+        }
+
+        function getResult(playerChoice, computerChoice) {
+            if (playerChoice === computerChoice) {
+                return "It's a draw!";
+            } else if (
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "paper" && computerChoice === "rock") ||
+                (playerChoice === "scissors" && computerChoice === "paper")
+            ) {
+                return "You win!";
+            } else {
+                return "You lose!";
+            }
+        }
+    </script>
+</body>
+</html>
